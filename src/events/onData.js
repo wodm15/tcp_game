@@ -2,6 +2,7 @@ import { config } from '../config/config.js';
 import { PACKET_TYPE, TOTAL_LENGTH } from '../constants/header.js';
 import { packetParser } from '../utils/parser/packetPaser.js';
 import { getHandlerById } from '../handlers/index.js';
+import { handleError } from '../utils/error/errorHandler.js';
 
 export const onData = (socket) => async (data) => {
   // 기존 버퍼에 새로 수신된 데이터를 추가
@@ -22,7 +23,7 @@ export const onData = (socket) => async (data) => {
       // 패킷 데이터를 자르고 버퍼에서 제거
       const packet = socket.buffer.slice(totalHeaderLength, length);
       socket.buffer = socket.buffer.slice(length);
-
+      try{
       console.log(`length: ${length}`);
       console.log(`packetType: ${packetType}`);
       console.log(packet);
@@ -43,6 +44,8 @@ export const onData = (socket) => async (data) => {
             userId,
             payload,
           });
+      }}catch(error){
+        handleError(socket,error);
       }
     } else {
       // 아직 전체 패킷이 도착하지 않음
