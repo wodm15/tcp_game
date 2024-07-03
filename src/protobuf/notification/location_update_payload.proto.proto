@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package locationUpdatePayload;
+
+// LocationUpdatePayload 구조
+message LocationUpdatePayload {
+  float x = 1;  // x 좌표
+  float y = 2;  // y 좌표
+}
