@@ -6,7 +6,7 @@ const TOTAL_LENGTH = 4; // 전체 길이를 나타내는 4바이트
 const PACKET_TYPE_LENGTH = 1; // 패킷타입을 나타내는 1바이트
 
 let userId;
-let gameId = 'e38a9118-3538-48c1-a376-c74febb9d259';
+let gameId = '12bc3531-4a73-4786-9dc2-12ad29fde73f';
 // let sequence = 0;
 const deviceId = 'xxxxx';
 let x = 0.0;
@@ -79,7 +79,7 @@ const sendPong = (socket, timestamp) => {
 
 const updateLocation = (socket) => {
   x += 1;
-  const packet = createPacket(6, { gameId, x, y }, '1.0.0', 'game', 'LocationUpdatePayload');
+  const packet = createPacket(2, { gameId, x, y }, '1.0.0', 'game', 'LocationUpdatePayload');
 
   sendPacket(socket, packet);
 };

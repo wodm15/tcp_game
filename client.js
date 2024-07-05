@@ -81,7 +81,7 @@ const sendPong = (socket, timestamp) => {
 
 const updateLocation = (socket) => {
   x += 0.1;
-  const packet = createPacket(6, { gameId, x, y }, '1.0.0', 'game', 'LocationUpdatePayload');
+  const packet = createPacket(2, { gameId, x, y }, '1.0.0', 'game', 'LocationUpdatePayload');
 
   sendPacket(socket, packet);
 };

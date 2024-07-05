@@ -3,9 +3,16 @@ import { handleError } from '../../utils/error/errorHandler.js';
 import CustomError from '../../utils/error/customError.js';
 import { ErrorCodes } from '../../utils/error/errorCodes.js';
 
+import {getUserGameId} from '../../session/user.session.js';
+
 const updateLocationHandler = ({ socket, userId, payload }) => {
   try {
-    const { gameId, x, y } = payload;
+    const { x, y } = payload;
+    const gameId = getUserGameId(userId);
+
+    if(!gameId) {
+      throw new CustomError(ErrorCodes.GAME_NOT_FOUND, '유저아이디를 통한 게임아이디 찾기 오류');
+    }
     const gameSession = getGameSession(gameId);
 
     if (!gameSession) {

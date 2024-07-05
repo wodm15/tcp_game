@@ -6,6 +6,8 @@ import { getUserById } from '../../session/user.session.js';
 import CustomError from '../../utils/error/customError.js';
 import { ErrorCodes } from '../../utils/error/errorCodes.js';
 
+import { setUserGameId } from '../../session/user.session.js';
+
 const joinGameHandler = ({ socket, userId, payload }) => {
   try {
     const { gameId } = payload;
@@ -23,6 +25,9 @@ const joinGameHandler = ({ socket, userId, payload }) => {
     if (!existUser) {
       gameSession.addUser(user);
     }
+
+    // 유저와 게임 아이디 관계 매핑
+    setUserGameId(userId, gameId);
 
     console.log(getAllGameSessions());
 
