@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package initial;
 
-// InitialPayload 구조
-message InitialPayload {
-  string deviceId = 1;     // deviceId (문자열)
-  uint32 playerId = 2;     // playerId (uint32)
-  float latency = 3;       // latency (float)
+// 최초 패킷 구조
+message InitialPacket {
+  string deviceId = 1;
+  uint32 playerId = 2;
+  float latency = 3;
 }
