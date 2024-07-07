@@ -29,7 +29,7 @@ const joinGameHandler = ({ socket, userId, payload }) => {
     // 유저와 게임 아이디 관계 매핑
     setUserGameId(userId, gameId);
 
-    console.log(getAllGameSessions());
+    // console.log(getAllGameSessions());
 
     const joinGameResponse = createResponse(
       HANDLER_IDS.JOIN_GAME,

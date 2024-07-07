@@ -1,7 +1,7 @@
 import { userSessions } from './sessions.js';
 import User from '../classes/models/user.class.js';
 
-const userGameIdMap = new Map(); // userId를 키로 gameId를 값으로 가짐
+let userIdtoGameId ={};
 
 export const addUser = (id, socket) => {
   const user = new User(id, socket);
@@ -14,7 +14,6 @@ export const removeUser = (socket) => {
   if (index !== -1) {
     const removedUser = userSessions.splice(index, 1)[0];
     const userId = removedUser.id;
-    userGameIdMap.delete(userId); // 유저와 게임 ID 매핑 제거
     return removedUser;
   }
 };
@@ -36,14 +35,14 @@ export const getNextSequence = (id) => {
 };
 
 export const setUserGameId = (userId, gameId) => {
-  userGameIdMap.set(userId, gameId);
+  userIdtoGameId[userId] = gameId;
   console.log(`Set gameId ${gameId} for userId ${userId}`);
 };
 
 export const getUserGameId = (userId) => {
-  return userGameIdMap.get(userId);
+  return userIdtoGameId[userId];
 };
 
 export const removeUserGameId = (userId) => {
-  userGameIdMap.delete(userId);
+  delete userIdtoGameId[userId];
 };

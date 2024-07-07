@@ -22,3 +22,4 @@ CREATE TABLE IF NOT EXISTS user_positions
   x FLOAT NOT NULL,
   y FLOAT NOT NULL
 )
+

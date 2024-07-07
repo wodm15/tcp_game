@@ -1,12 +1,14 @@
 import net from 'net';
 import Long from 'long';
 import { getProtoMessages, loadProtos } from './src/init/loadProtos.js';
+import {client2} from './client.js';
+
 
 const TOTAL_LENGTH = 4; // 전체 길이를 나타내는 4바이트
 const PACKET_TYPE_LENGTH = 1; // 패킷타입을 나타내는 1바이트
 
 let userId;
-let gameId = 'cefcb793-e0a5-44d0-a0ed-5e62c284805c';
+let gameId = '551a3b94-a46f-47ee-ab57-e9508776eac5' //이 부분 알맞게 수정
 // let sequence = 0;
 const deviceId = 'xxxxx';
 let x = 0.0;

@@ -44,7 +44,7 @@ class Game {
   getMaxLatency() {
     let maxLatency = 0;
     this.users.forEach((user) => {
-      console.log(`${user.id}: ${user.latency}`);
+      // console.log(`${user.id}: ${user.latency}`);
       maxLatency = Math.max(maxLatency, user.latency);
     });
     return maxLatency;

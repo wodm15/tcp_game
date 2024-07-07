@@ -7,6 +7,7 @@ const PACKET_TYPE_LENGTH = 1; // 패킷타입을 나타내는 1바이트
 
 let userId;
 let gameId;
+let client2;
 // let sequence = 0;
 const deviceId = 'xxxx1x';
 let x = 0.0;
@@ -82,7 +83,7 @@ const sendPong = (socket, timestamp) => {
 const updateLocation = (socket) => {
   x += 0.1;
   const packet = createPacket(2, { gameId, x, y }, '1.0.0', 'game', 'LocationUpdatePayload');
-
+  
   sendPacket(socket, packet);
 };
 
@@ -133,6 +134,9 @@ client.on('data', (data) => {
         userId = responseData.userId;
       }
       console.log('응답 데이터:', responseData);
+      if(responseData.gameId){
+      client2 = responseData.gameId //gameId 할당
+      }
       // sequence = response.sequence;
     } catch (e) {
       console.log(e);
@@ -193,3 +197,5 @@ process.on('SIGINT', () => {
     process.exit(0);
   });
 });
+
+export { client2 };
