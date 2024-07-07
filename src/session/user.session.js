@@ -1,8 +1,7 @@
 import { userSessions } from './sessions.js';
 import User from '../classes/models/user.class.js';
 
-
-const userGameIdMap = new Map(); //userId를 키로 gameId를 값으로 가짐
+const userGameIdMap = new Map(); // userId를 키로 gameId를 값으로 가짐
 
 export const addUser = (id, socket) => {
   const user = new User(id, socket);
@@ -38,7 +37,7 @@ export const getNextSequence = (id) => {
 
 export const setUserGameId = (userId, gameId) => {
   userGameIdMap.set(userId, gameId);
-  console.log(userGameIdMap);
+  console.log(`Set gameId ${gameId} for userId ${userId}`);
 };
 
 export const getUserGameId = (userId) => {

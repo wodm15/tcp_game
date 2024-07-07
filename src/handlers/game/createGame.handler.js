@@ -15,6 +15,7 @@ const createGameHandler = ({ socket, userId, payload }) => {
     const gameSession = addGameSession(gameId);
 
     const user = getUserById(userId);
+
     if (!user) {
       throw new CustomError(ErrorCodes.USER_NOT_FOUND, '유저를 찾을 수 없습니다.');
     }

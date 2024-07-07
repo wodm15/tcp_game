@@ -6,7 +6,7 @@ const TOTAL_LENGTH = 4; // 전체 길이를 나타내는 4바이트
 const PACKET_TYPE_LENGTH = 1; // 패킷타입을 나타내는 1바이트
 
 let userId;
-let gameId = '12bc3531-4a73-4786-9dc2-12ad29fde73f';
+let gameId = 'd9262847-1375-43e3-8d85-5044a0255ebf';
 // let sequence = 0;
 const deviceId = 'xxxxx';
 let x = 0.0;
