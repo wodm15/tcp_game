@@ -15,3 +15,10 @@ CREATE TABLE IF NOT EXISTS game_end
     score      INT       DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES user (id)
 );
+
+CREATE TABLE IF NOT EXISTS user_positions 
+(
+  id VARCHAR(36) PRIMARY KEY,
+  x FLOAT NOT NULL,
+  y FLOAT NOT NULL
+)
