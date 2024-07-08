@@ -9,6 +9,7 @@ protobuf    protobuf    프로토콜 버퍼 구조체           가변
 
 
 
+
 node src/server.js 로 서버 실행
 
 실행 후 node client1.js로 서버를 실행하면 응답 데이터로 gameId 가 출력됨.
