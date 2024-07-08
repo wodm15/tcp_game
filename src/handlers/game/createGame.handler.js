@@ -8,8 +8,7 @@ import CustomError from '../../utils/error/customError.js';
 import { ErrorCodes } from '../../utils/error/errorCodes.js';
 
 import { setUserGameId } from '../../session/user.session.js';
-let userIdtoGameId ={};
-console.log(userIdtoGameId);
+
 const createGameHandler = ({ socket, userId, payload }) => {
   try {
     const gameId = uuidv4();

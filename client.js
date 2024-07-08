@@ -7,7 +7,7 @@ const PACKET_TYPE_LENGTH = 1; // 패킷타입을 나타내는 1바이트
 
 let userId;
 let gameId;
-let client2;
+
 // let sequence = 0;
 const deviceId = 'xxxx1x';
 let x = 0.0;
@@ -135,7 +135,7 @@ client.on('data', (data) => {
       }
       console.log('응답 데이터:', responseData);
       if(responseData.gameId){
-      client2 = responseData.gameId //gameId 할당
+
       }
       // sequence = response.sequence;
     } catch (e) {
@@ -198,4 +198,3 @@ process.on('SIGINT', () => {
   });
 });
 
-export { client2 };
