@@ -1,15 +1,4 @@
 
-공통 패킷 구조
-
-totalLength int         메세지의 전체 길이             4 Byte
-
-packetType  int         패킷의 타입                  1 Byte
-
-protobuf    protobuf    프로토콜 버퍼 구조체           가변
-
-
-
-
 서버 실행 테스트
 
 
