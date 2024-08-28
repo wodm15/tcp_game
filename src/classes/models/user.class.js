@@ -8,11 +8,20 @@ class User {
     this.y = 0;
     this.sequence = 0;
     this.lastUpdateTime = Date.now();
+    this.velocityX = 0;
+    this.velocityY = 0;
   }
 
   updatePosition(x, y) {
+    // 이전 위치 저장
+    const previousX = this.x;
+    const previousY = this.y;
+
+    // 새로운 위치와 속도 업데이트
     this.x = x;
     this.y = y;
+    this.velocityX = (x - previousX) / ((Date.now() - this.lastUpdateTime) / 1000); // 초 단위
+    this.velocityY = (y - previousY) / ((Date.now() - this.lastUpdateTime) / 1000); // 초 단위
     this.lastUpdateTime = Date.now();
   }
 
@@ -22,27 +31,29 @@ class User {
 
   ping() {
     const now = Date.now();
-
-    // console.log(`${this.id}: ping`);
     this.socket.write(createPingPacket(now));
   }
 
   handlePong(data) {
     const now = Date.now();
     this.latency = (now - data.timestamp) / 2;
-    // console.log(`Received pong from user ${this.id} at ${now} with latency ${this.latency}ms`);
   }
 
   // 추측항법을 사용하여 위치를 추정하는 메서드
-  calculatePosition(latency) {
-    const timeDiff = latency / 1000; // 레이턴시를 초 단위로 계산
-    const speed = 1; // 속도 고정
-    const distance = speed * timeDiff;
+  calculatePosition() {
+    if (!this.latency) {
+      return { x: this.x, y: this.y };
+    }
 
-    // x, y 축에서 이동한 거리 계산
+    const timeDiff = this.latency / 1000; // 레이턴시를 초 단위로 계산
+
+    // 레이턴시를 고려하여 이동한 거리 계산
+    const predictedX = this.x + this.velocityX * timeDiff;
+    const predictedY = this.y + this.velocityY * timeDiff;
+
     return {
-      x: this.x + distance,
-      y: this.y,
+      x: predictedX,
+      y: predictedY,
     };
   }
 }
