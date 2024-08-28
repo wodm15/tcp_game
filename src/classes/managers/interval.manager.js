@@ -10,6 +10,14 @@ class IntervalManager extends BaseManager {
     if (!this.intervals.has(playerId)) {
       this.intervals.set(playerId, new Map());
     }
+
+    const userIntervals = this.intervals.get(playerId);
+
+    // 이미 존재하는 타입의 인터벌이 있는지 확인
+    if (userIntervals.has(type)) {
+      throw new Error(`Interval for player ${playerId} and type ${type} already exists.`);
+    }
+
     this.intervals.get(playerId).set(type, setInterval(callback, interval));
   }
 
